@@ -1,4 +1,12 @@
 class CommentsController < ApplicationController
+  
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create!(params[:comment])
+    redirect_to @post
+  end
+  
+=begin
   # GET /comments
   # GET /comments.xml
   def index
@@ -80,4 +88,5 @@ class CommentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+=end
 end
